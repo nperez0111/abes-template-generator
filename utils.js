@@ -1,5 +1,7 @@
 const makeNewProxy = require( 'proxify-objects' )
-const divisor = 6142
+const constants = require( './constants.json' )
+const sortBy = require( 'sort-by' )
+const divisor = constants.divisor
 const E = {
     sum: items => {
         return items.reduce( ( p, c ) => p + c, 0 )
@@ -62,31 +64,18 @@ const E = {
         return items.map( bet => bet && bet.map( obj => E.makeLineItem( obj, total ) ) )
     },
     parseDivisions: ( items ) => {
-        return [
-            'General Requirements',
-            'Site work',
-            'Concrete',
-            'Masonry',
-            'Metals',
-            'Wood and Plastics',
-            'Thermal / Waterproof protection',
-            'Doors and Windows',
-            'Finishes',
-            'Specialties',
-            'Equipment',
-            'Unknown',
-            'Special Construction',
-            'Unknown',
-            'Plumbing + HVAC',
-            'Electrical + Lighting'
-        ].map( label => {
+        console.log( items )
+        return constants.labels.map( label => {
             return { label: label }
         } ).map( ( obj, i ) => {
-            if ( items[ i ] == undefined || items[ i ] === null || items.length == 0 ) {
+            if ( items[ i ] == undefined || items[ i ] === null || items[ i ].length == 0 ) {
                 return false;
             }
             return E.makeDivision( obj, i, items )
         } ).filter( a => a )
+    },
+    Generator: ( main, items ) => {
+        return E.makeData( Object.assign( {}, main, { divisions: E.parseDivisions( E.parseItems( items.map( cur => cur.sort( sortBy( 'description', 'amount' ) ) ) ) ) } ) )
     }
 }
 module.exports = E

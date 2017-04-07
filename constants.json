@@ -11,11 +11,20 @@
         "Finishes",
         "Specialties",
         "Equipment",
-        "Unknown",
         "Special Construction",
-        "Unknown",
+        "Conveying Systems",
         "Plumbing + HVAC",
         "Electrical + Lighting"
     ],
-    "divisor": 6142
+    "divisor": 6142,
+    "columnsToInput": [ {
+        "label": "Division Description",
+        "type": "text"
+    }, {
+        "label": "Amount",
+        "type": "number"
+    }, {
+        "label": "Division Costs",
+        "type": "number"
+    } ]
 }

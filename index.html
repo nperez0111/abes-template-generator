@@ -3,22 +3,150 @@
 <head>
     <meta charset="utf-8" />
     <title>Template Generator</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <style type="text/css">
+    .ractive-autocomplete {
+        position: relative;
+    }
+    
+    .ractive-autocomplete ul {
+        display: inline-block;
+        position: absolute;
+        top: 2em;
+        left: 0;
+        background-color: white;
+        padding: 0.25em 0;
+        list-style-type: none;
+        border: 1px solid #BBBBFF;
+        width: 100%;
+        z-index: 2;
+    }
+    
+    .ractive-autocomplete li {
+        padding: 0 0.25em;
+    }
+    
+    .ractive-autocomplete li:hover {
+        cursor: pointer;
+        background-color: #BBBBFF;
+    }
+    
+    .ractive-autocomplete .selected {
+        color: white;
+        background-color: #8888FF;
+    }
+    
+    input[readonly] {
+        background-color: lightgrey;
+    }
+    
+    .text-center {
+        text-align: center;
+    }
+    
+    .table-remove {
+        color: #700;
+    }
+    
+    .table-save {
+        color: #070;
+    }
+    
+    .table-revert {
+        color: #700;
+    }
+    
+    .marg-top {
+        margin-top: 20px;
+        margin-bottom: 0px;
+        border-bottom-right-radius: 0px;
+        border-bottom-left-radius: 0px;
+    }
+    </style>
 </head>
 
 <body>
     <div id="container"></div>
     <script src="vendor.js"></script>
-    <script src="bundle.js"></script>
-    <script src='http://cdn.ractivejs.org/latest/ractive.min.js'></script>
     <script type="text/ractive" id='template'>
-        <p>Hello, {{name}}!</p>
+        <div class="container-fluid bg-3">
+            <div class="page-header text-center">
+                <h1 class='text-underline'>Invoice Generator</h1>
+            </div>
+            {{#labels:r}}
+            <div class="container-fluid">
+                <div class="panel {{#if !disabled[r]}}panel-primary{{/if}} marg-top">
+                    <div class="panel-heading">
+                        <h3 class="text-capitalize"><span>{{#if disabled[r]}}Disabled: {{/if}}{{labels[r]}}</span><button class="btn btn-default pull-right" on-click='disable'>{{#if disabled[r]}}Enable{{else}}Disable{{/if}} this section</button></h3>
+                    </div>
+                </div>
+                {{#if !disabled[r]}}
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover table-fixed">
+                        <thead>
+                            <tr>
+                                {{#each columns:r}}
+                                <th>{{columns[r].label}}</th>
+                                {{/each}}
+                                <th>Edit</th>
+                            </tr>
+                        </thead>
+                        {{#if inputs[r].length>0}}
+                        <tbody>
+                            {{#each inputs[r]:c}}
+                            <tr>
+                                {{#each inputs[r][c]:i}}
+                                <td>
+                                    {{#if columns[i].type=='number'}}
+                                    <!--<label for='{{r}}{{c}}'>{{columns[c].label}}</label>-->
+                                    <input type="number" id="{{r}}{{c}}{{i}}" value="{{inputs[r][c][i]}}" tabindex="{{r+c}}"> {{/if}} {{#if columns[i].type=='text'}}
+                                    <!--<label for="{{r}}{{c}}">{{columns[c].label}}</label>-->
+                                    <input type="text" id="{{r}}{{c}}" value="{{inputs[r][c][i]}}" tabindex="{{r+c}}"> {{/if}}
+                                </td>
+                                {{/each}}
+                                <td>
+                                    <button class="btn btn-default" role='button' on-click='delete'><span class="glyphicon glyphicon-remove table-remove"></span> Delete</button>
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                        {{/if}}
+                        <tfoot>
+                            <tr>
+                                {{#each columns:c}}
+                                <td>
+                                    {{#if columns[c].type=='number'}}
+                                    <label for='{{r}}{{c}}'>{{columns[c].label}} :</label>
+                                    <input type="number" id="{{r}}{{c}}" value="{{toAdd[r][c]}}" tabindex="{{r+c}}"> {{/if}}
+                                    <!-- Splits up the if statement-->
+                                    {{#if columns[c].type=='text'}}
+                                    <label for="{{r}}{{c}}">{{columns[c].label}} :</label>
+                                    <input type="text" id="{{r}}{{c}}" value="{{toAdd[r][c]}}" tabindex="{{r+c}}"> {{/if}}
+                                </td>
+                                {{/each}}
+                                <td>
+                                    <button class="btn btn-default" role="button" on-click="add"><span class="glyphicon glyphicon-floppy-saved table-save"></span> Add</button>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                {{/if}}
+            </div>
+            {{/labels}}
+            <div class="row pull-right">
+                <div class="btn btn-primary" on-click='invoice'>Download your Invoice!</div>
+                <div class="btn btn-primary" on-click='sanity'>Sanity Check</div>
+            </div>
+        </div>
     </script>
     <script>
     function loadFile(url, callback) {
         JSZipUtils.getBinaryContent(url, callback);
     }
 
-    function Generator(data) {
+    function makeFile(data) {
         loadFile("input.docx", function(error, content) {
             if (error) {
                 throw error
@@ -28,7 +156,6 @@
             doc.setData(data);
 
             try {
-                // render the document (replace all occurences of {first_name} by John, {last_name} by Doe, ...)
                 doc.render()
             } catch (error) {
                 var e = {
@@ -37,10 +164,7 @@
                     stack: error.stack,
                     properties: error.properties,
                 }
-                console.log(JSON.stringify({
-                    error: e
-                }));
-                // The error thrown here contains additional information when logged with JSON.stringify (it contains a property object).
+                console.log(JSON.stringify(e, (a, b) => b, 2));
                 throw error;
             }
 
@@ -52,21 +176,8 @@
         })
     }
     </script>
-    <script type="text/javascript">
-    var ractive = new Ractive({
-        // The `el` option can be a node, an ID, or a CSS selector.
-        el: '#container',
-
-        // We could pass in a string, but for the sake of convenience
-        // we're passing the ID of the <script> tag above.
-        template: '#template',
-
-        // Here, we're passing in some initial data
-        data: {
-            name: 'world'
-        }
-    });
-    </script>
+    <script src="bundle.js"></script>
+    <script src='browser.js'></script>
 </body>
 
 </html>
