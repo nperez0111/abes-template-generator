@@ -1,0 +1,21 @@
+{
+    "labels": [
+        "General Requirements",
+        "Site work",
+        "Concrete",
+        "Masonry",
+        "Metals",
+        "Wood and Plastics",
+        "Thermal / Waterproof protection",
+        "Doors and Windows",
+        "Finishes",
+        "Specialties",
+        "Equipment",
+        "Unknown",
+        "Special Construction",
+        "Unknown",
+        "Plumbing + HVAC",
+        "Electrical + Lighting"
+    ],
+    "divisor": 6142
+}

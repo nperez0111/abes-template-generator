@@ -1,0 +1,72 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Template Generator</title>
+</head>
+
+<body>
+    <div id="container"></div>
+    <script src="vendor.js"></script>
+    <script src="bundle.js"></script>
+    <script src='http://cdn.ractivejs.org/latest/ractive.min.js'></script>
+    <script type="text/ractive" id='template'>
+        <p>Hello, {{name}}!</p>
+    </script>
+    <script>
+    function loadFile(url, callback) {
+        JSZipUtils.getBinaryContent(url, callback);
+    }
+
+    function Generator(data) {
+        loadFile("input.docx", function(error, content) {
+            if (error) {
+                throw error
+            };
+            var zip = new JSZip(content);
+            var doc = new Docxtemplater().loadZip(zip)
+            doc.setData(data);
+
+            try {
+                // render the document (replace all occurences of {first_name} by John, {last_name} by Doe, ...)
+                doc.render()
+            } catch (error) {
+                var e = {
+                    message: error.message,
+                    name: error.name,
+                    stack: error.stack,
+                    properties: error.properties,
+                }
+                console.log(JSON.stringify({
+                    error: e
+                }));
+                // The error thrown here contains additional information when logged with JSON.stringify (it contains a property object).
+                throw error;
+            }
+
+            var out = doc.getZip().generate({
+                    type: "blob",
+                    mimeType: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                }) //Output the document using Data-URI
+            saveAs(out, "output.docx")
+        })
+    }
+    </script>
+    <script type="text/javascript">
+    var ractive = new Ractive({
+        // The `el` option can be a node, an ID, or a CSS selector.
+        el: '#container',
+
+        // We could pass in a string, but for the sake of convenience
+        // we're passing the ID of the <script> tag above.
+        template: '#template',
+
+        // Here, we're passing in some initial data
+        data: {
+            name: 'world'
+        }
+    });
+    </script>
+</body>
+
+</html>
