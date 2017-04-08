@@ -1,37 +1,18 @@
-const ofEachType = utils.pick( constants.columnsToInput, 'type' ).map( cur => {
-        if ( cur == 'text' ) {
-            return ''
-        }
-        if ( cur == 'number' ) {
-            return 0
-        }
-        return false
-    } ),
+const ofCorrectType = type => type == 'text' ? '' : type == 'number' ? 0 : false,
+    ofEachType = utils.pick( constants.columnsToInput, 'type' ).map( ofCorrectType ),
     getItem = name => JSON.parse( localStorage.getItem( name ) ),
     setItem = ( name, obj ) => localStorage.setItem( name, JSON.stringify( obj ) )
 
 var Main = Ractive.extend( {
-    keys: [ 'inputs', 'disabled', 'toAdd', 'possibles' ],
+    keys: [ 'inputs', 'disabled', 'toAdd', 'suggestions', 'data', 'extras' ],
     invoice: function ( ev ) {
         //figure out data schema
         const items = this.get( 'inputs' ).map( input => input.map( cur => cur.reduce( ( p, c, i ) => {
-            if ( i == 0 ) {
-                p.description = c
-            } else if ( i == 1 ) {
-                p.amount = c
-            } else if ( i == 2 ) {
-                p.div = c
-            }
+            p[ constants.columnsToInput[ i ].id ] = c
             return p
         }, {} ) ) )
 
-        makeFile( utils.Generator( {
-            client: 'Nick The Sick',
-            fees: 100,
-            profit: 10,
-            cost: 23,
-            total: 1090
-        }, items ) )
+        makeFile( utils.Generator( this.get( 'data' ), items ) )
     },
     moveTo: function ( fro, to ) {
         if ( fro !== parseInt( fro, 10 ) || to !== parseInt( to, 10 ) ) {
@@ -82,11 +63,25 @@ var Main = Ractive.extend( {
             invoice: this.invoice,
             add: this.add,
             delete: this.delete,
+            addS: function ( ev ) {
+                const index = ev.index.r,
+                    text = this.get( 'toAddS.' + index )
+                this.push( 'suggestions.' + index, text )
+                this.set( 'toAddS.' + index )
+            },
+            deleteS: function ( ev ) {
+                const r = ev.index.r,
+                    c = ev.index.c
+                this.splice( 'suggestions.' + r, c, 1 )
+            },
             openSettings: function () {
                 this.toggle( 'settings' )
             },
             disable: function ( ev ) {
                 this.toggle( 'disabled.' + ev.index.r )
+            },
+            editSuggestions: function ( ev ) {
+                this.toggle( 'collapsed' )
             },
             sanity: function () {
                 console.log( 'sanity' );
@@ -121,7 +116,7 @@ var Main = Ractive.extend( {
 
 
 
-        this.observe( 'inputs disabled toAdd', this.save )
+        this.observe( this.keys.join( " " ), this.save )
 
     },
     data: function () {
@@ -134,21 +129,28 @@ var Main = Ractive.extend( {
                 items = this.keys.map( key => getItem( key ) )
             }
         }
+        const sugs = items[ 3 ] || utils.possibles.map( c => utils.pick( c, 'name' ) )
         return {
-            data: {},
+            extras: items[ 5 ] || constants.needed,
+            data: items[ 4 ] || utils.pick( constants.needed, 'id' ).reduce( ( p, c, i ) => {
+                p[ c ] = ofCorrectType( constants.needed[ i ].type )
+                return p
+            }, {} ),
             toAdd: items[ 2 ] || constants.labels.map( c => ofEachType.slice( 0 ) ),
             disabled: items[ 1 ] || constants.labels.map( c => false ),
             inputs: items[ 0 ] || constants.labels.map( c => [ /*ofEachType.slice( 0 )*/] ),
             unfilled: constants.labels.map( c => ofEachType.slice( 0 ).fill( false ) ),
             columns: constants.columnsToInput.slice( 0 ),
             labels: constants.labels.slice( 0 ),
-            possibles: items[ 3 ] || utils.possibles.slice( 0 ),
-            settings: false
+            suggestions: sugs,
+            toAddS: sugs.map( c => '' ),
+            settings: false,
+            collapsed: true
         };
     },
     partials: {
         input: `<div class="input-group {{unfilled[r][c]?'has-error':''}}">
-            <label for='{{r}}{{c}}' class="input-group-addon" id="label{{r}}{{c}}">{{columns[c].label}} :</label>
+            <label for='{{r}}{{c}}' class="input-group-addon" id="label{{r}}{{c}}">{{columns[c].label}}</label>
             <input type="{{columns[c].type}}" id="{{r}}{{c}}" value="{{toAdd[r][c]}}" tabindex="{{r+c}}" class="form-control" aria-describedby="label{{r}}{{c}}" required>
         </div>`
     }
@@ -158,5 +160,6 @@ var Main = Ractive.extend( {
 
 var ractive = new Main( {
     el: '#container',
-    template: '#template'
+    template: '#template',
+    components: { select: RactiveSelect }
 } );

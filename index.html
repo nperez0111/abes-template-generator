@@ -13,7 +13,7 @@
     .ractive-autocomplete ul {
         display: inline-block;
         position: absolute;
-        top: 2em;
+        top: 2.2em;
         left: 0;
         background-color: white;
         padding: 0.25em 0;
@@ -98,11 +98,10 @@
                             <tr>
                                 {{#each inputs[r][c]:i}}
                                 <td>
-                                    {{#if columns[i].type=='number'}}
-                                    <!--<label for='{{r}}{{c}}'>{{columns[c].label}}</label>-->
-                                    <input type="number" id="{{r}}{{c}}{{i}}" value="{{inputs[r][c][i]}}" tabindex="{{r+c}}"> {{/if}} {{#if columns[i].type=='text'}}
-                                    <!--<label for="{{r}}{{c}}">{{columns[c].label}}</label>-->
-                                    <input type="text" id="{{r}}{{c}}" value="{{inputs[r][c][i]}}" tabindex="{{r+c}}"> {{/if}}
+                                    <div class="col-sm-12">
+                                        <!--<label for='{{r}}{{c}}'>{{columns[c].label}}</label>-->
+                                        <input type="{{columns[i].type}}" id="{{r}}{{c}}{{i}}" value="{{inputs[r][c][i]}}" tabindex="{{r+c}}" class="col-sm-12">
+                                    </div>
                                 </td>
                                 {{/each}}
                                 <td>
@@ -118,7 +117,15 @@
                                 <td>
                                     {{#if columns[c].type=='number'}} {{>input}} {{/if}}
                                     <!-- Splits up the if statement-->
-                                    {{#if columns[c].type=='text'}} {{>input}}{{/if}}
+                                    {{#if columns[c].type=='text'}}
+                                    <div class="input-group {{unfilled[r][c]?'has-error':''}}">
+                                        <label for='{{r}}{{c}}' class="input-group-addon" id="label{{r}}{{c}}">{{columns[c].label}}</label>
+                                        <select value="{{toAdd[r][c]}}">
+                                            {{#each suggestions[r]}}
+                                            <option>{{this}}</option>
+                                            {{/each}}
+                                        </select>
+                                    </div>{{/if}}
                                 </td>
                                 {{/each}}
                                 <td>
@@ -131,12 +138,50 @@
                 {{/if}}
             </div>
             {{/labels}}
-            <div class="row pull-right">
-                <button class="btn btn-primary" on-click='invoice'>Download your Invoice!</button>
-                <button class="btn btn-primary" on-click='sanity'>Sanity Check</button>
+            <div class="form-horizontal">
+                {{#each extras:i}}
+                <div class="form-group">
+                    <label for='extra{{i}}' class="col-sm-2 control-label" id="label{{i}}">{{extras[i].display}}</label>
+                    <div class="col-sm-10">
+                        <input type="{{extras[i].type}}" id="extra{{i}}" value="{{data[extras[i].id]}}" class="form-control" aria-describedby="label{{i}}" required>
+                    </div>
+                </div>
+                {{/each}}
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button class="btn btn-primary" on-click='invoice'>Download your Invoice!</button>
+                        <button class="btn btn-primary" on-click='sanity'>Sanity Check</button>
+                    </div>
+                </div>
             </div>
             {{/if}} {{#if settings}}
-            <div>setttings here</div> {{/if}}
+            <div class="container-fluid">
+                <div class="page-header">
+                    <h4><span>Edit Suggestions</span><button class="btn btn-default pull-right" on-click='editSuggestions'>Edit</button></h4>
+                </div>
+                {{#if !collapsed}} {{#each suggestions:r}}
+                <h5>{{labels[r]}}</h5> {{#each suggestions[r]:c}}
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            <button class="btn btn-default" role='button' on-click='deleteS'><span class="glyphicon glyphicon-remove table-remove"></span> Delete</button>
+                        </label>
+                        <div class="col-sm-10">
+                            <input type="text" value="{{suggestions[r][c]}}" class="form-control" required>
+                        </div>
+                    </div>
+                </div>{{/each}}
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            <button class="btn btn-default" role="button" on-click="addS"><span class="glyphicon glyphicon-floppy-saved table-save"></span> Add</button>
+                        </label>
+                        <div class="col-sm-10">
+                            <input type="text" value="{{toAddS[r]}}" class="form-control">
+                        </div>
+                    </div>
+                </div>{{/each}} {{/if}}
+            </div> {{/if}}
         </div>
     </script>
     <script>
@@ -175,6 +220,7 @@
     }
     </script>
     <script src="bundle.js"></script>
+    <script src="select.js"></script>
     <script src='browser.js'></script>
 </body>
 

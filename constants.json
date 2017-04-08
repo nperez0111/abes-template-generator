@@ -21,12 +21,36 @@
     "divisor": 6142,
     "columnsToInput": [ {
         "label": "Division Description",
+        "id": "description",
         "type": "text"
     }, {
         "label": "Amount",
+        "id": "amount",
         "type": "number"
     }, {
         "label": "Division Costs",
+        "id": "div",
+        "type": "number"
+    } ],
+    "needed": [ {
+        "id": "client",
+        "display": "Client's Name",
+        "type": "text"
+    }, {
+        "id": "fees",
+        "display": "Fees",
+        "type": "number"
+    }, {
+        "id": "profit",
+        "display": "Profit",
+        "type": "number"
+    }, {
+        "id": "cost",
+        "display": "Cost",
+        "type": "number"
+    }, {
+        "id": "total",
+        "display": "Total",
         "type": "number"
     } ]
 
