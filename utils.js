@@ -1,8 +1,35 @@
 const makeNewProxy = require( 'proxify-objects' )
 const constants = require( './constants.json' )
 const sortBy = require( 'sort-by' )
+const throttle = require( 'throttle-debounce/throttle' ),
+    debounce = require( 'throttle-debounce/debounce' )
 const divisor = constants.divisor
+const lineSplitter = ( list ) => {
+    let i = 0
+    return list.split( '\n' ).reduce( ( p, c ) => {
+        if ( c !== '' ) {
+            var index = Number( c.charAt( 0 ) + '' + c.charAt( 1 ) ) - 1,
+                obj = {
+                    category: index + 1,
+                    number: Number( c.slice( 0, 5 ) ),
+                    text: c.slice( 6 ).trim(),
+                    index: i++,
+                    name: c.slice( 0 ).trim()
+                }
+            if ( !( index in p ) ) {
+                p[ index ] = []
+            }
+            p[ index ].push( obj )
+        }
+        return p
+
+    }, [] )
+}
 const E = {
+    debounce: debounce,
+    throttle: throttle,
+    lineSplitter: lineSplitter,
+    possibles: require( './possibles.json' ),
     sum: items => {
         return items.reduce( ( p, c ) => p + c, 0 )
     },
@@ -42,13 +69,13 @@ const E = {
                 return E.sum( E.pick( obj.divisions, 'subtotal' ) )
             },
             insurance( obj ) {
-                return parseInt( obj.sum * 0.0115, 10 )
+                return parseInt( obj.sum * constants.insurance, 10 )
             },
             subtotal( obj ) {
                 return obj.sum + obj.insurance
             },
             profit( obj ) {
-                return obj.sum * 0.2
+                return obj.sum * constants.profit
             },
             cost( obj ) {
                 return obj.subtotal + obj.fees
@@ -64,7 +91,6 @@ const E = {
         return items.map( bet => bet && bet.map( obj => E.makeLineItem( obj, total ) ) )
     },
     parseDivisions: ( items ) => {
-        console.log( items )
         return constants.labels.map( label => {
             return { label: label }
         } ).map( ( obj, i ) => {

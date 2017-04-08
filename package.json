@@ -23,7 +23,8 @@
         "left-pad": "^1.1.3",
         "proxify-objects": "^0.0.5",
         "ractive-autocomplete": "^1.0.3",
-        "sort-by": "^1.2.0"
+        "sort-by": "^1.2.0",
+        "throttle-debounce": "^1.0.1"
     },
     "devDependencies": {
         "webpack": "^2.3.3"

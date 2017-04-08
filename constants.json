@@ -16,6 +16,8 @@
         "Plumbing + HVAC",
         "Electrical + Lighting"
     ],
+    "profit": 0.2,
+    "insurance": 0.0115,
     "divisor": 6142,
     "columnsToInput": [ {
         "label": "Division Description",
@@ -27,4 +29,5 @@
         "label": "Division Costs",
         "type": "number"
     } ]
+
 }

@@ -1,17 +1,19 @@
 const ofEachType = utils.pick( constants.columnsToInput, 'type' ).map( cur => {
-    if ( cur == 'text' ) {
-        return ''
-    }
-    if ( cur == 'number' ) {
-        return 0
-    }
-    return false
-} )
+        if ( cur == 'text' ) {
+            return ''
+        }
+        if ( cur == 'number' ) {
+            return 0
+        }
+        return false
+    } ),
+    getItem = name => JSON.parse( localStorage.getItem( name ) ),
+    setItem = ( name, obj ) => localStorage.setItem( name, JSON.stringify( obj ) )
 
 var Main = Ractive.extend( {
+    keys: [ 'inputs', 'disabled', 'toAdd', 'possibles' ],
     invoice: function ( ev ) {
         //figure out data schema
-        //makeFile( Generator( this.get( 'data' ) ) )
         const items = this.get( 'inputs' ).map( input => input.map( cur => cur.reduce( ( p, c, i ) => {
             if ( i == 0 ) {
                 p.description = c
@@ -22,7 +24,7 @@ var Main = Ractive.extend( {
             }
             return p
         }, {} ) ) )
-        console.log( 'inboice' )
+
         makeFile( utils.Generator( {
             client: 'Nick The Sick',
             fees: 100,
@@ -31,14 +33,32 @@ var Main = Ractive.extend( {
             total: 1090
         }, items ) )
     },
+    moveTo: function ( fro, to ) {
+        if ( fro !== parseInt( fro, 10 ) || to !== parseInt( to, 10 ) ) {
+            return false;
+        }
+        if ( fro > to ) {
+            fro = fro + to;
+            to = fro - to;
+            fro = fro - to;
+        }
+        var data = this.get( "inputs." + index ),
+            x = data.splice( fro, 1 ),
+            y = data.splice( to - 1, 1 );
+        data.splice( fro, 0, y[ 0 ] );
+        data.splice( to, 0, x[ 0 ] );
+        return true;
+    },
     add: function ( ev ) {
         const index = ev.index.r
+        this.set( 'unfilled.' + index, ofEachType.slice( 0 ).fill( false ) )
         console.log( index )
         const cur = 'inputs.' + index
         const toAdd = this.get( 'toAdd.' + index )
         if ( toAdd.some( ( cur, i ) => cur === ofEachType[ i ] ) ) {
+            const unfilled = toAdd.map( ( c, i ) => i ).map( ( c, i ) => toAdd[ i ] === ofEachType[ i ] )
+            this.set( 'unfilled.' + index, unfilled )
             return;
-            //Dont add and throw some error or something
         }
         this.push( cur, toAdd );
 
@@ -48,11 +68,23 @@ var Main = Ractive.extend( {
         console.log( ev )
         this.splice( 'inputs.' + ev.index.r, ev.index.c, 1 )
     },
+    save: utils.throttle( 300, function () {
+
+        this.keys.forEach( key => {
+
+            setItem( key, this.get( key ) )
+
+        } )
+
+    } ),
     oninit: function () {
         this.on( {
             invoice: this.invoice,
             add: this.add,
             delete: this.delete,
+            openSettings: function () {
+                this.toggle( 'settings' )
+            },
             disable: function ( ev ) {
                 this.toggle( 'disabled.' + ev.index.r )
             },
@@ -70,42 +102,55 @@ var Main = Ractive.extend( {
                         amount: 1000,
                         div: 123
                     }, {
-                        description: 'thing1',
+                        description: 'thing2khjkhk',
                         amount: 1000,
                         div: 123
                     } ],
                     [ {
                         description: 'thing1',
-                        amount: 1000,
+                        amount: 100,
                         div: 123
                     }, {
-                        description: 'thing1',
-                        amount: 1000,
-                        div: 123
+                        description: 'thing2',
+                        amount: 10,
+                        div: 1230
                     } ]
                 ] ) )
             }
         } )
+
+
+
+        this.observe( 'inputs disabled toAdd', this.save )
+
     },
     data: function () {
+        let items = this.keys.slice( 0 ).fill( false )
+        if ( 'localStorage' in window ) {
+
+            var inputs = getItem( 'inputs' )
+            if ( !!inputs ) {
+
+                items = this.keys.map( key => getItem( key ) )
+            }
+        }
         return {
             data: {},
-            toAdd: constants.labels.map( c => ofEachType.slice( 0 ) ),
-            disabled: constants.labels.map( c => false ),
-            inputs: constants.labels.map( c => [ /*ofEachType.slice( 0 )*/] ),
+            toAdd: items[ 2 ] || constants.labels.map( c => ofEachType.slice( 0 ) ),
+            disabled: items[ 1 ] || constants.labels.map( c => false ),
+            inputs: items[ 0 ] || constants.labels.map( c => [ /*ofEachType.slice( 0 )*/] ),
+            unfilled: constants.labels.map( c => ofEachType.slice( 0 ).fill( false ) ),
             columns: constants.columnsToInput.slice( 0 ),
-            selection: constants.labels.map( ( cur, i ) => {
-                return { name: cur, id: i }
-            } ),
-            searchUsers: function ( text, callback ) {
-                var error = null;
-                var results = constants.labels.map( ( cur, i ) => {
-                    return { name: cur, id: i }
-                } );
-                callback( error, results );
-            },
-            labels: constants.labels
+            labels: constants.labels.slice( 0 ),
+            possibles: items[ 3 ] || utils.possibles.slice( 0 ),
+            settings: false
         };
+    },
+    partials: {
+        input: `<div class="input-group {{unfilled[r][c]?'has-error':''}}">
+            <label for='{{r}}{{c}}' class="input-group-addon" id="label{{r}}{{c}}">{{columns[c].label}} :</label>
+            <input type="{{columns[c].type}}" id="{{r}}{{c}}" value="{{toAdd[r][c]}}" tabindex="{{r+c}}" class="form-control" aria-describedby="label{{r}}{{c}}" required>
+        </div>`
     }
 } )
 
