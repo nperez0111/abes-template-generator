@@ -6,7 +6,6 @@ const ofCorrectType = type => type == 'text' ? '' : type == 'number' ? 0 : false
 var Main = Ractive.extend( {
     keys: [ 'inputs', 'disabled', 'toAdd', 'suggestions', 'data', 'extras' ],
     invoice: function ( ev ) {
-        //figure out data schema
         const items = this.get( 'inputs' ).map( input => input.map( cur => cur.reduce( ( p, c, i ) => {
             p[ constants.columnsToInput[ i ].id ] = c
             return p
@@ -19,9 +18,9 @@ var Main = Ractive.extend( {
             return false;
         }
         if ( fro > to ) {
-            fro = fro + to;
-            to = fro - to;
-            fro = fro - to;
+            fro = fro + to
+            to = fro - to
+            fro = fro - to
         }
         var data = this.get( "inputs." + index ),
             x = data.splice( fro, 1 ),
@@ -59,10 +58,14 @@ var Main = Ractive.extend( {
 
     } ),
     oninit: function () {
+        new Clipboard( '.clippy' );
         this.on( {
             invoice: this.invoice,
             add: this.add,
             delete: this.delete,
+            clearStorage: () => {
+                localStorage.clear()
+            },
             addS: function ( ev ) {
                 const index = ev.index.r,
                     text = this.get( 'toAddS.' + index )
@@ -82,6 +85,24 @@ var Main = Ractive.extend( {
             },
             editSuggestions: function ( ev ) {
                 this.toggle( 'collapsed' )
+            },
+            export: function () {
+                this.toggle( 'startExport' )
+            },
+            import: function () {
+                this.toggle( 'startImport' )
+            },
+            doImport: function () {
+                try {
+                    var obj = JSON.parse( this.get( 'import' ) )
+                    if ( this.keys.every( cur => cur in obj ) ) {
+                        this.keys.forEach( key => {
+                            this.set( key, obj[ key ] )
+                        } )
+                    }
+                } catch ( e ) {
+                    alert( "Couldn't import" )
+                }
             },
             sanity: function () {
                 console.log( 'sanity' );
@@ -145,7 +166,16 @@ var Main = Ractive.extend( {
             suggestions: sugs,
             toAddS: sugs.map( c => '' ),
             settings: false,
-            collapsed: true
+            collapsed: true,
+            startExport: false,
+            startImport: false,
+            import: '',
+            combined: function () {
+                return JSON.stringify( this.keys.map( key => this.get( key ) ).reduce( ( p, c, i ) => {
+                    p[ this.keys[ i ] ] = c;
+                    return p
+                }, {} ) )
+            }
         };
     },
     partials: {

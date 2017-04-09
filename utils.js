@@ -10,9 +10,6 @@ const lineSplitter = ( list ) => {
         if ( c !== '' ) {
             var index = Number( c.charAt( 0 ) + '' + c.charAt( 1 ) ) - 1,
                 obj = {
-                    category: index + 1,
-                    number: Number( c.slice( 0, 5 ) ),
-                    text: c.slice( 6 ).trim(),
                     index: i++,
                     name: c.slice( 0 ).trim()
                 }

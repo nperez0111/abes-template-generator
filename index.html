@@ -68,6 +68,7 @@
 
 <body>
     <div id="container"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.6.0/clipboard.min.js"></script>
     <script src="vendor.js"></script>
     <script type="text/ractive" id='template'>
         <div class="container-fluid bg-3">
@@ -181,6 +182,30 @@
                         </div>
                     </div>
                 </div>{{/each}} {{/if}}
+                <div class="page-header">
+                    <h4><span>Export template data.</span><button class="btn btn-default pull-right" on-click='export'>Open drawer to export</button></h4> {{#if startExport}}
+                    <div class="row">
+                        <p>Copy this to transfer data off to another computer, browser or to store for generating a proposal later</p>
+                        <textarea id='foo'>{{combined()}}</textarea>
+                        <button class="btn clippy" data-clipboard-target="#foo">
+                            Copy to clipboard
+                        </button>
+                    </div>
+                    {{/if}}
+                </div>
+                <div class="page-header">
+                    <h4><span>Import template data.</span><button class="btn btn-default pull-right" on-click='import'>Open drawer to import</button></h4> {{#if startImport}}
+                    <div class="row">
+                        <textarea id='foo'>{{import}}</textarea>
+                        <button class="btn" on-click='doImport'>
+                            Import
+                        </button>
+                    </div>
+                    {{/if}}
+                </div>
+                <div class="page-header">
+                    <h4><span>Clear Storage</span><button class="btn btn-default pull-right" on-click='clearStorage'>Clear Storage</button></h4>
+                </div>
             </div> {{/if}}
         </div>
     </script>

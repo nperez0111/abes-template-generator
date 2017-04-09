@@ -17500,9 +17500,6 @@ const lineSplitter = ( list ) => {
         if ( c !== '' ) {
             var index = Number( c.charAt( 0 ) + '' + c.charAt( 1 ) ) - 1,
                 obj = {
-                    category: index + 1,
-                    number: Number( c.slice( 0, 5 ) ),
-                    text: c.slice( 6 ).trim(),
                     index: i++,
                     name: c.slice( 0 ).trim()
                 }
@@ -17982,1517 +17979,881 @@ module.exports = function ( delay, atBegin, callback ) {
 module.exports = [
 	[
 		{
-			"category": 1,
-			"number": 1100,
-			"text": "Summary",
-			"id": 0,
+			"index": 0,
 			"name": "01100 Summary"
 		},
 		{
-			"category": 1,
-			"number": 1200,
-			"text": "Price and Payment Procedures",
-			"id": 1,
+			"index": 1,
 			"name": "01200 Price and Payment Procedures"
 		},
 		{
-			"category": 1,
-			"number": 1300,
-			"text": "Administrative Requirements",
-			"id": 2,
+			"index": 2,
 			"name": "01300 Administrative Requirements"
 		},
 		{
-			"category": 1,
-			"number": 1400,
-			"text": "Quality Requirements",
-			"id": 3,
+			"index": 3,
 			"name": "01400 Quality Requirements"
 		},
 		{
-			"category": 1,
-			"number": 1500,
-			"text": "Temporary Facilities and Controls",
-			"id": 4,
+			"index": 4,
 			"name": "01500 Temporary Facilities and Controls"
 		},
 		{
-			"category": 1,
-			"number": 1600,
-			"text": "Product Requirements",
-			"id": 5,
+			"index": 5,
 			"name": "01600 Product Requirements"
 		},
 		{
-			"category": 1,
-			"number": 1700,
-			"text": "Execution Requirements",
-			"id": 6,
+			"index": 6,
 			"name": "01700 Execution Requirements"
 		},
 		{
-			"category": 1,
-			"number": 1800,
-			"text": "Facility Operation",
-			"id": 7,
+			"index": 7,
 			"name": "01800 Facility Operation"
 		},
 		{
-			"category": 1,
-			"number": 1900,
-			"text": "Facility Decommissioning",
-			"id": 8,
+			"index": 8,
 			"name": "01900 Facility Decommissioning"
 		}
 	],
 	[
 		{
-			"category": 2,
-			"number": 2050,
-			"text": "Basic Site Materials and Methods",
-			"id": 9,
+			"index": 9,
 			"name": "02050 Basic Site Materials and Methods"
 		},
 		{
-			"category": 2,
-			"number": 2100,
-			"text": "Site Remediation",
-			"id": 10,
+			"index": 10,
 			"name": "02100 Site Remediation"
 		},
 		{
-			"category": 2,
-			"number": 2200,
-			"text": "Site Preparation",
-			"id": 11,
+			"index": 11,
 			"name": "02200 Site Preparation"
 		},
 		{
-			"category": 2,
-			"number": 2300,
-			"text": "Earthwork",
-			"id": 12,
+			"index": 12,
 			"name": "02300 Earthwork"
 		},
 		{
-			"category": 2,
-			"number": 2400,
-			"text": "Tunneling, Boring, and Jacking",
-			"id": 13,
+			"index": 13,
 			"name": "02400 Tunneling, Boring, and Jacking"
 		},
 		{
-			"category": 2,
-			"number": 2450,
-			"text": "Foundation and Load-bearing Elements",
-			"id": 14,
+			"index": 14,
 			"name": "02450 Foundation and Load-bearing Elements"
 		},
 		{
-			"category": 2,
-			"number": 2500,
-			"text": "Utility Services",
-			"id": 15,
+			"index": 15,
 			"name": "02500 Utility Services"
 		},
 		{
-			"category": 2,
-			"number": 2600,
-			"text": "Drainage and Containment",
-			"id": 16,
+			"index": 16,
 			"name": "02600 Drainage and Containment"
 		},
 		{
-			"category": 2,
-			"number": 2700,
-			"text": "Bases, Ballasts, Pavements, and Appurtenances",
-			"id": 17,
+			"index": 17,
 			"name": "02700 Bases, Ballasts, Pavements, and Appurtenances"
 		},
 		{
-			"category": 2,
-			"number": 2800,
-			"text": "Site Improvements and Amenities",
-			"id": 18,
+			"index": 18,
 			"name": "02800 Site Improvements and Amenities"
 		},
 		{
-			"category": 2,
-			"number": 2900,
-			"text": "Planting",
-			"id": 19,
+			"index": 19,
 			"name": "02900 Planting"
 		},
 		{
-			"category": 2,
-			"number": 2950,
-			"text": "Site Restoration and Rehabilitation",
-			"id": 20,
+			"index": 20,
 			"name": "02950 Site Restoration and Rehabilitation"
 		}
 	],
 	[
 		{
-			"category": 3,
-			"number": 3050,
-			"text": "Basic Concrete Materials and Methods",
-			"id": 21,
+			"index": 21,
 			"name": "03050 Basic Concrete Materials and Methods"
 		},
 		{
-			"category": 3,
-			"number": 3100,
-			"text": "Concrete Forms and Accessories",
-			"id": 22,
+			"index": 22,
 			"name": "03100 Concrete Forms and Accessories"
 		},
 		{
-			"category": 3,
-			"number": 3200,
-			"text": "Concrete Reinforcement",
-			"id": 23,
+			"index": 23,
 			"name": "03200 Concrete Reinforcement"
 		},
 		{
-			"category": 3,
-			"number": 3300,
-			"text": "Cast-in-Place Concrete",
-			"id": 24,
+			"index": 24,
 			"name": "03300 Cast-in-Place Concrete"
 		},
 		{
-			"category": 3,
-			"number": 3400,
-			"text": "Precast Concrete",
-			"id": 25,
+			"index": 25,
 			"name": "03400 Precast Concrete"
 		},
 		{
-			"category": 3,
-			"number": 3500,
-			"text": "Cementitious Decks and Underlayment",
-			"id": 26,
+			"index": 26,
 			"name": "03500 Cementitious Decks and Underlayment"
 		},
 		{
-			"category": 3,
-			"number": 3600,
-			"text": "Grouts",
-			"id": 27,
+			"index": 27,
 			"name": "03600 Grouts"
 		},
 		{
-			"category": 3,
-			"number": 3700,
-			"text": "Mass Concrete",
-			"id": 28,
+			"index": 28,
 			"name": "03700 Mass Concrete"
 		},
 		{
-			"category": 3,
-			"number": 3900,
-			"text": "Concrete Restoration and Cleaning",
-			"id": 29,
+			"index": 29,
 			"name": "03900 Concrete Restoration and Cleaning"
 		}
 	],
 	[
 		{
-			"category": 4,
-			"number": 4050,
-			"text": "Basic Masonry Materials and Methods",
-			"id": 30,
+			"index": 30,
 			"name": "04050 Basic Masonry Materials and Methods"
 		},
 		{
-			"category": 4,
-			"number": 4200,
-			"text": "Masonry Units",
-			"id": 31,
+			"index": 31,
 			"name": "04200 Masonry Units"
 		},
 		{
-			"category": 4,
-			"number": 4400,
-			"text": "Stone",
-			"id": 32,
+			"index": 32,
 			"name": "04400 Stone"
 		},
 		{
-			"category": 4,
-			"number": 4500,
-			"text": "Refractories",
-			"id": 33,
+			"index": 33,
 			"name": "04500 Refractories"
 		},
 		{
-			"category": 4,
-			"number": 4600,
-			"text": "Corrosion-Resistant Masonry",
-			"id": 34,
+			"index": 34,
 			"name": "04600 Corrosion-Resistant Masonry"
 		},
 		{
-			"category": 4,
-			"number": 4700,
-			"text": "Simulated Masonry",
-			"id": 35,
+			"index": 35,
 			"name": "04700 Simulated Masonry"
 		},
 		{
-			"category": 4,
-			"number": 4800,
-			"text": "Masonry Assemblies",
-			"id": 36,
+			"index": 36,
 			"name": "04800 Masonry Assemblies"
 		},
 		{
-			"category": 4,
-			"number": 4900,
-			"text": "Masonry Restoration and Cleaning",
-			"id": 37,
+			"index": 37,
 			"name": "04900 Masonry Restoration and Cleaning"
 		}
 	],
 	[
 		{
-			"category": 5,
-			"number": 5050,
-			"text": "Basic Metal Materials and Methods",
-			"id": 38,
+			"index": 38,
 			"name": "05050 Basic Metal Materials and Methods"
 		},
 		{
-			"category": 5,
-			"number": 5100,
-			"text": "Structural Metal Framing",
-			"id": 39,
+			"index": 39,
 			"name": "05100 Structural Metal Framing"
 		},
 		{
-			"category": 5,
-			"number": 5200,
-			"text": "Metal Joists",
-			"id": 40,
+			"index": 40,
 			"name": "05200 Metal Joists"
 		},
 		{
-			"category": 5,
-			"number": 5300,
-			"text": "Metal Deck",
-			"id": 41,
+			"index": 41,
 			"name": "05300 Metal Deck"
 		},
 		{
-			"category": 5,
-			"number": 5400,
-			"text": "Cold-Formed Metal Framing",
-			"id": 42,
+			"index": 42,
 			"name": "05400 Cold-Formed Metal Framing"
 		},
 		{
-			"category": 5,
-			"number": 5500,
-			"text": "Metal Fabrications",
-			"id": 43,
+			"index": 43,
 			"name": "05500 Metal Fabrications"
 		},
 		{
-			"category": 5,
-			"number": 5600,
-			"text": "Hydraulic Fabrications",
-			"id": 44,
+			"index": 44,
 			"name": "05600 Hydraulic Fabrications"
 		},
 		{
-			"category": 5,
-			"number": 5650,
-			"text": "Railroad Track and Accessories",
-			"id": 45,
+			"index": 45,
 			"name": "05650 Railroad Track and Accessories"
 		},
 		{
-			"category": 5,
-			"number": 5700,
-			"text": "Ornamental Metal",
-			"id": 46,
+			"index": 46,
 			"name": "05700 Ornamental Metal"
 		},
 		{
-			"category": 5,
-			"number": 5800,
-			"text": "Expansion Control",
-			"id": 47,
+			"index": 47,
 			"name": "05800 Expansion Control"
 		},
 		{
-			"category": 5,
-			"number": 5900,
-			"text": "Metal Restoration and Cleaning",
-			"id": 48,
+			"index": 48,
 			"name": "05900 Metal Restoration and Cleaning"
 		}
 	],
 	[
 		{
-			"category": 6,
-			"number": 6050,
-			"text": "Basic Materials and Methods",
-			"id": 49,
+			"index": 49,
 			"name": "06050 Basic Materials and Methods"
 		},
 		{
-			"category": 6,
-			"number": 6100,
-			"text": "Rough Carpentry",
-			"id": 50,
+			"index": 50,
 			"name": "06100 Rough Carpentry"
 		},
 		{
-			"category": 6,
-			"number": 6200,
-			"text": "Finish Carpentry",
-			"id": 51,
+			"index": 51,
 			"name": "06200 Finish Carpentry"
 		},
 		{
-			"category": 6,
-			"number": 6400,
-			"text": "Architectural Woodwork",
-			"id": 52,
+			"index": 52,
 			"name": "06400 Architectural Woodwork"
 		},
 		{
-			"category": 6,
-			"number": 6500,
-			"text": "Structural Plastics",
-			"id": 53,
+			"index": 53,
 			"name": "06500 Structural Plastics"
 		},
 		{
-			"category": 6,
-			"number": 6600,
-			"text": "Plastic Fabrications",
-			"id": 54,
+			"index": 54,
 			"name": "06600 Plastic Fabrications"
 		},
 		{
-			"category": 6,
-			"number": 6900,
-			"text": "Wood and Plastic Restoration and Cleaning",
-			"id": 55,
+			"index": 55,
 			"name": "06900 Wood and Plastic Restoration and Cleaning"
 		}
 	],
 	[
 		{
-			"category": 7,
-			"number": 7050,
-			"text": "Basic Materials and Methods",
-			"id": 56,
+			"index": 56,
 			"name": "07050 Basic Materials and Methods"
 		},
 		{
-			"category": 7,
-			"number": 7100,
-			"text": "Dampproofing and Waterproofing",
-			"id": 57,
+			"index": 57,
 			"name": "07100 Dampproofing and Waterproofing"
 		},
 		{
-			"category": 7,
-			"number": 7200,
-			"text": "Thermal Protection",
-			"id": 58,
+			"index": 58,
 			"name": "07200 Thermal Protection"
 		},
 		{
-			"category": 7,
-			"number": 7300,
-			"text": "Shingles, Roof Tiles, and Roof Coverings",
-			"id": 59,
+			"index": 59,
 			"name": "07300 Shingles, Roof Tiles, and Roof Coverings"
 		},
 		{
-			"category": 7,
-			"number": 7400,
-			"text": "Roofing and Siding Panels",
-			"id": 60,
+			"index": 60,
 			"name": "07400 Roofing and Siding Panels"
 		},
 		{
-			"category": 7,
-			"number": 7500,
-			"text": "Membrane Roofing",
-			"id": 61,
+			"index": 61,
 			"name": "07500 Membrane Roofing"
 		},
 		{
-			"category": 7,
-			"number": 7600,
-			"text": "Flashing and Sheet Metal",
-			"id": 62,
+			"index": 62,
 			"name": "07600 Flashing and Sheet Metal"
 		},
 		{
-			"category": 7,
-			"number": 7700,
-			"text": "Roof Specialties and Accessories",
-			"id": 63,
+			"index": 63,
 			"name": "07700 Roof Specialties and Accessories"
 		},
 		{
-			"category": 7,
-			"number": 7800,
-			"text": "Fire and Smoke Protection",
-			"id": 64,
+			"index": 64,
 			"name": "07800 Fire and Smoke Protection"
 		},
 		{
-			"category": 7,
-			"number": 7900,
-			"text": "Joint Sealers",
-			"id": 65,
+			"index": 65,
 			"name": "07900 Joint Sealers"
 		}
 	],
 	[
 		{
-			"category": 8,
-			"number": 8050,
-			"text": "Basic Materials and Methods",
-			"id": 66,
+			"index": 66,
 			"name": "08050 Basic Materials and Methods"
 		},
 		{
-			"category": 8,
-			"number": 8100,
-			"text": "Metal Doors and Frames",
-			"id": 67,
+			"index": 67,
 			"name": "08100 Metal Doors and Frames"
 		},
 		{
-			"category": 8,
-			"number": 8200,
-			"text": "Wood and Plastic Doors",
-			"id": 68,
+			"index": 68,
 			"name": "08200 Wood and Plastic Doors"
 		},
 		{
-			"category": 8,
-			"number": 8300,
-			"text": "Specialty Doors",
-			"id": 69,
+			"index": 69,
 			"name": "08300 Specialty Doors"
 		},
 		{
-			"category": 8,
-			"number": 8400,
-			"text": "Entrances and Storefronts",
-			"id": 70,
+			"index": 70,
 			"name": "08400 Entrances and Storefronts"
 		},
 		{
-			"category": 8,
-			"number": 8500,
-			"text": "Windows",
-			"id": 71,
+			"index": 71,
 			"name": "08500 Windows"
 		},
 		{
-			"category": 8,
-			"number": 8600,
-			"text": "Skylights",
-			"id": 72,
+			"index": 72,
 			"name": "08600 Skylights"
 		},
 		{
-			"category": 8,
-			"number": 8700,
-			"text": "Hardware",
-			"id": 73,
+			"index": 73,
 			"name": "08700 Hardware"
 		},
 		{
-			"category": 8,
-			"number": 8800,
-			"text": "Glazing",
-			"id": 74,
+			"index": 74,
 			"name": "08800 Glazing"
 		},
 		{
-			"category": 8,
-			"number": 8900,
-			"text": "Glazed Curtain Wall",
-			"id": 75,
+			"index": 75,
 			"name": "08900 Glazed Curtain Wall"
 		}
 	],
 	[
 		{
-			"category": 9,
-			"number": 9050,
-			"text": "Basic Materials and Methods",
-			"id": 76,
+			"index": 76,
 			"name": "09050 Basic Materials and Methods"
 		},
 		{
-			"category": 9,
-			"number": 9100,
-			"text": "Metal Support Assemblies",
-			"id": 77,
+			"index": 77,
 			"name": "09100 Metal Support Assemblies"
 		},
 		{
-			"category": 9,
-			"number": 9200,
-			"text": "Plaster and Gypsum Board",
-			"id": 78,
+			"index": 78,
 			"name": "09200 Plaster and Gypsum Board"
 		},
 		{
-			"category": 9,
-			"number": 9300,
-			"text": "Tile",
-			"id": 79,
+			"index": 79,
 			"name": "09300 Tile"
 		},
 		{
-			"category": 9,
-			"number": 9400,
-			"text": "Terrazzo",
-			"id": 80,
+			"index": 80,
 			"name": "09400 Terrazzo"
 		},
 		{
-			"category": 9,
-			"number": 9500,
-			"text": "Ceilings",
-			"id": 81,
+			"index": 81,
 			"name": "09500 Ceilings"
 		},
 		{
-			"category": 9,
-			"number": 9600,
-			"text": "Flooring",
-			"id": 82,
+			"index": 82,
 			"name": "09600 Flooring"
 		},
 		{
-			"category": 9,
-			"number": 9700,
-			"text": "Wall Finishes",
-			"id": 83,
+			"index": 83,
 			"name": "09700 Wall Finishes"
 		},
 		{
-			"category": 9,
-			"number": 9800,
-			"text": "Acoustical Treatment",
-			"id": 84,
+			"index": 84,
 			"name": "09800 Acoustical Treatment"
 		},
 		{
-			"category": 9,
-			"number": 9900,
-			"text": "Paints and Coatings",
-			"id": 85,
+			"index": 85,
 			"name": "09900 Paints and Coatings"
 		}
 	],
 	[
 		{
-			"category": 10,
-			"number": 10100,
-			"text": "Visual Display Boards",
-			"id": 86,
+			"index": 86,
 			"name": "10100 Visual Display Boards"
 		},
 		{
-			"category": 10,
-			"number": 10150,
-			"text": "Compartments and Cubicles",
-			"id": 87,
+			"index": 87,
 			"name": "10150 Compartments and Cubicles"
 		},
 		{
-			"category": 10,
-			"number": 10200,
-			"text": "Louvers and Vents",
-			"id": 88,
+			"index": 88,
 			"name": "10200 Louvers and Vents"
 		},
 		{
-			"category": 10,
-			"number": 10240,
-			"text": "Grilles and Screens",
-			"id": 89,
+			"index": 89,
 			"name": "10240 Grilles and Screens"
 		},
 		{
-			"category": 10,
-			"number": 10250,
-			"text": "Service Walls",
-			"id": 90,
+			"index": 90,
 			"name": "10250 Service Walls"
 		},
 		{
-			"category": 10,
-			"number": 10260,
-			"text": "Wall and Corner Guards",
-			"id": 91,
+			"index": 91,
 			"name": "10260 Wall and Corner Guards"
 		},
 		{
-			"category": 10,
-			"number": 10270,
-			"text": "Access Flooring",
-			"id": 92,
+			"index": 92,
 			"name": "10270 Access Flooring"
 		},
 		{
-			"category": 10,
-			"number": 10290,
-			"text": "Pest Control",
-			"id": 93,
+			"index": 93,
 			"name": "10290 Pest Control"
 		},
 		{
-			"category": 10,
-			"number": 10300,
-			"text": "Fireplaces and Stoves",
-			"id": 94,
+			"index": 94,
 			"name": "10300 Fireplaces and Stoves"
 		},
 		{
-			"category": 10,
-			"number": 10340,
-			"text": "Manufactured Exterior Specialties",
-			"id": 95,
+			"index": 95,
 			"name": "10340 Manufactured Exterior Specialties"
 		},
 		{
-			"category": 10,
-			"number": 10350,
-			"text": "Flagpoles",
-			"id": 96,
+			"index": 96,
 			"name": "10350 Flagpoles"
 		},
 		{
-			"category": 10,
-			"number": 10400,
-			"text": "Identification Devices",
-			"id": 97,
+			"index": 97,
 			"name": "10400 Identification Devices"
 		},
 		{
-			"category": 10,
-			"number": 10450,
-			"text": "Pedestrian Control Devices",
-			"id": 98,
+			"index": 98,
 			"name": "10450 Pedestrian Control Devices"
 		},
 		{
-			"category": 10,
-			"number": 10500,
-			"text": "Lockers",
-			"id": 99,
+			"index": 99,
 			"name": "10500 Lockers"
 		},
 		{
-			"category": 10,
-			"number": 10520,
-			"text": "Fire Protection Specialties",
-			"id": 100,
+			"index": 100,
 			"name": "10520 Fire Protection Specialties"
 		},
 		{
-			"category": 10,
-			"number": 10530,
-			"text": "Protective Covers",
-			"id": 101,
+			"index": 101,
 			"name": "10530 Protective Covers"
 		},
 		{
-			"category": 10,
-			"number": 10550,
-			"text": "Postal Specialties",
-			"id": 102,
+			"index": 102,
 			"name": "10550 Postal Specialties"
 		},
 		{
-			"category": 10,
-			"number": 10600,
-			"text": "Partitions",
-			"id": 103,
+			"index": 103,
 			"name": "10600 Partitions"
 		},
 		{
-			"category": 10,
-			"number": 10670,
-			"text": "Storage Shelving",
-			"id": 104,
+			"index": 104,
 			"name": "10670 Storage Shelving"
 		},
 		{
-			"category": 10,
-			"number": 10700,
-			"text": "Exterior Protection",
-			"id": 105,
+			"index": 105,
 			"name": "10700 Exterior Protection"
 		},
 		{
-			"category": 10,
-			"number": 10750,
-			"text": "Telephone Specialties",
-			"id": 106,
+			"index": 106,
 			"name": "10750 Telephone Specialties"
 		},
 		{
-			"category": 10,
-			"number": 10800,
-			"text": "Toilet, Bath, and Laundry Accessories",
-			"id": 107,
+			"index": 107,
 			"name": "10800 Toilet, Bath, and Laundry Accessories"
 		},
 		{
-			"category": 10,
-			"number": 10880,
-			"text": "Scales",
-			"id": 108,
+			"index": 108,
 			"name": "10880 Scales"
 		},
 		{
-			"category": 10,
-			"number": 10900,
-			"text": "Wardrobe and Closet Specialties",
-			"id": 109,
+			"index": 109,
 			"name": "10900 Wardrobe and Closet Specialties"
 		}
 	],
 	[
 		{
-			"category": 11,
-			"number": 11010,
-			"text": "Maintenance Equipment",
-			"id": 110,
+			"index": 110,
 			"name": "11010 Maintenance Equipment"
 		},
 		{
-			"category": 11,
-			"number": 11020,
-			"text": "Security and Vault Equipment",
-			"id": 111,
+			"index": 111,
 			"name": "11020 Security and Vault Equipment"
 		},
 		{
-			"category": 11,
-			"number": 11030,
-			"text": "Teller and Service Equipment",
-			"id": 112,
+			"index": 112,
 			"name": "11030 Teller and Service Equipment"
 		},
 		{
-			"category": 11,
-			"number": 11040,
-			"text": "Ecclesiastical Equipment",
-			"id": 113,
+			"index": 113,
 			"name": "11040 Ecclesiastical Equipment"
 		},
 		{
-			"category": 11,
-			"number": 11050,
-			"text": "Library Equipment",
-			"id": 114,
+			"index": 114,
 			"name": "11050 Library Equipment"
 		},
 		{
-			"category": 11,
-			"number": 11060,
-			"text": "Theater and Stage Equipment",
-			"id": 115,
+			"index": 115,
 			"name": "11060 Theater and Stage Equipment"
 		},
 		{
-			"category": 11,
-			"number": 11070,
-			"text": "Instrumental Equipment",
-			"id": 116,
+			"index": 116,
 			"name": "11070 Instrumental Equipment"
 		},
 		{
-			"category": 11,
-			"number": 11080,
-			"text": "Registration Equipment",
-			"id": 117,
+			"index": 117,
 			"name": "11080 Registration Equipment"
 		},
 		{
-			"category": 11,
-			"number": 11090,
-			"text": "Checkroom Equipment",
-			"id": 118,
+			"index": 118,
 			"name": "11090 Checkroom Equipment"
 		},
 		{
-			"category": 11,
-			"number": 11100,
-			"text": "Mercantile Equipment",
-			"id": 119,
+			"index": 119,
 			"name": "11100 Mercantile Equipment"
 		},
 		{
-			"category": 11,
-			"number": 11110,
-			"text": "Commercial Laundry and Dry Cleaning Equipment",
-			"id": 120,
+			"index": 120,
 			"name": "11110 Commercial Laundry and Dry Cleaning Equipment"
 		},
 		{
-			"category": 11,
-			"number": 11120,
-			"text": "Vending Equipment",
-			"id": 121,
+			"index": 121,
 			"name": "11120 Vending Equipment"
 		},
 		{
-			"category": 11,
-			"number": 11130,
-			"text": "Audio-Visual Equipment",
-			"id": 122,
+			"index": 122,
 			"name": "11130 Audio-Visual Equipment"
 		},
 		{
-			"category": 11,
-			"number": 11140,
-			"text": "Vehicle Service Equipment",
-			"id": 123,
+			"index": 123,
 			"name": "11140 Vehicle Service Equipment"
 		},
 		{
-			"category": 11,
-			"number": 11150,
-			"text": "Parking Control Equipment",
-			"id": 124,
+			"index": 124,
 			"name": "11150 Parking Control Equipment"
 		},
 		{
-			"category": 11,
-			"number": 11160,
-			"text": "Loading Dock Equipment",
-			"id": 125,
+			"index": 125,
 			"name": "11160 Loading Dock Equipment"
 		},
 		{
-			"category": 11,
-			"number": 11170,
-			"text": "Solid Waste Handling Equipment",
-			"id": 126,
+			"index": 126,
 			"name": "11170 Solid Waste Handling Equipment"
 		},
 		{
-			"category": 11,
-			"number": 11190,
-			"text": "Detention Equipment",
-			"id": 127,
+			"index": 127,
 			"name": "11190 Detention Equipment"
 		},
 		{
-			"category": 11,
-			"number": 11200,
-			"text": "Water Supply and Treatment Equipment",
-			"id": 128,
+			"index": 128,
 			"name": "11200 Water Supply and Treatment Equipment"
 		},
 		{
-			"category": 11,
-			"number": 11280,
-			"text": "Hydraulic Gates and Valves",
-			"id": 129,
+			"index": 129,
 			"name": "11280 Hydraulic Gates and Valves"
 		},
 		{
-			"category": 11,
-			"number": 11300,
-			"text": "Fluid Waste Treatment and Disposal Equipment",
-			"id": 130,
+			"index": 130,
 			"name": "11300 Fluid Waste Treatment and Disposal Equipment"
 		},
 		{
-			"category": 11,
-			"number": 11400,
-			"text": "Food Service Equipment",
-			"id": 131,
+			"index": 131,
 			"name": "11400 Food Service Equipment"
 		},
 		{
-			"category": 11,
-			"number": 11450,
-			"text": "Residential Equipment",
-			"id": 132,
+			"index": 132,
 			"name": "11450 Residential Equipment"
 		},
 		{
-			"category": 11,
-			"number": 11460,
-			"text": "Unit Kitchens",
-			"id": 133,
+			"index": 133,
 			"name": "11460 Unit Kitchens"
 		},
 		{
-			"category": 11,
-			"number": 11470,
-			"text": "Darkroom Equipment",
-			"id": 134,
+			"index": 134,
 			"name": "11470 Darkroom Equipment"
 		},
 		{
-			"category": 11,
-			"number": 11480,
-			"text": "Athletic, Recreational, and Therapeutic Equipment",
-			"id": 135,
+			"index": 135,
 			"name": "11480 Athletic, Recreational, and Therapeutic Equipment"
 		},
 		{
-			"category": 11,
-			"number": 11500,
-			"text": "Industrial and Process Equipment",
-			"id": 136,
+			"index": 136,
 			"name": "11500 Industrial and Process Equipment"
 		},
 		{
-			"category": 11,
-			"number": 11600,
-			"text": "Laboratory Equipment",
-			"id": 137,
+			"index": 137,
 			"name": "11600 Laboratory Equipment"
 		},
 		{
-			"category": 11,
-			"number": 11650,
-			"text": "Planetarium Equipment",
-			"id": 138,
+			"index": 138,
 			"name": "11650 Planetarium Equipment"
 		},
 		{
-			"category": 11,
-			"number": 11660,
-			"text": "Observatory Equipment",
-			"id": 139,
+			"index": 139,
 			"name": "11660 Observatory Equipment"
 		},
 		{
-			"category": 11,
-			"number": 11680,
-			"text": "Office Equipment",
-			"id": 140,
+			"index": 140,
 			"name": "11680 Office Equipment"
 		},
 		{
-			"category": 11,
-			"number": 11700,
-			"text": "Medical Equipment",
-			"id": 141,
+			"index": 141,
 			"name": "11700 Medical Equipment"
 		},
 		{
-			"category": 11,
-			"number": 11780,
-			"text": "Mortuary Equipment",
-			"id": 142,
+			"index": 142,
 			"name": "11780 Mortuary Equipment"
 		},
 		{
-			"category": 11,
-			"number": 11850,
-			"text": "Navigation Equipment",
-			"id": 143,
+			"index": 143,
 			"name": "11850 Navigation Equipment"
 		},
 		{
-			"category": 11,
-			"number": 11870,
-			"text": "Agricultural Equipment",
-			"id": 144,
+			"index": 144,
 			"name": "11870 Agricultural Equipment"
 		},
 		{
-			"category": 11,
-			"number": 11900,
-			"text": "Exhibit Equipment",
-			"id": 145,
+			"index": 145,
 			"name": "11900 Exhibit Equipment"
 		}
 	],
 	[
 		{
-			"category": 12,
-			"number": 12050,
-			"text": "Fabrics",
-			"id": 146,
+			"index": 146,
 			"name": "12050 Fabrics"
 		},
 		{
-			"category": 12,
-			"number": 12100,
-			"text": "Art",
-			"id": 147,
+			"index": 147,
 			"name": "12100 Art"
 		},
 		{
-			"category": 12,
-			"number": 12300,
-			"text": "Manufactured Casework",
-			"id": 148,
+			"index": 148,
 			"name": "12300 Manufactured Casework"
 		},
 		{
-			"category": 12,
-			"number": 12400,
-			"text": "Furnishings and Accessories",
-			"id": 149,
+			"index": 149,
 			"name": "12400 Furnishings and Accessories"
 		},
 		{
-			"category": 12,
-			"number": 12500,
-			"text": "Furniture",
-			"id": 150,
+			"index": 150,
 			"name": "12500 Furniture"
 		},
 		{
-			"category": 12,
-			"number": 12600,
-			"text": "Multiple Seating",
-			"id": 151,
+			"index": 151,
 			"name": "12600 Multiple Seating"
 		},
 		{
-			"category": 12,
-			"number": 12700,
-			"text": "Systems Furniture",
-			"id": 152,
+			"index": 152,
 			"name": "12700 Systems Furniture"
 		},
 		{
-			"category": 12,
-			"number": 12800,
-			"text": "Interior Plants and Planters",
-			"id": 153,
+			"index": 153,
 			"name": "12800 Interior Plants and Planters"
 		},
 		{
-			"category": 12,
-			"number": 12900,
-			"text": "Furnishings Repair and Restoration",
-			"id": 154,
+			"index": 154,
 			"name": "12900 Furnishings Repair and Restoration"
 		}
 	],
 	[
 		{
-			"category": 13,
-			"number": 13010,
-			"text": "Air-Supported Structures",
-			"id": 155,
+			"index": 155,
 			"name": "13010 Air-Supported Structures"
 		},
 		{
-			"category": 13,
-			"number": 13020,
-			"text": "Building Modules",
-			"id": 156,
+			"index": 156,
 			"name": "13020 Building Modules"
 		},
 		{
-			"category": 13,
-			"number": 13030,
-			"text": "Special Purpose Rooms",
-			"id": 157,
+			"index": 157,
 			"name": "13030 Special Purpose Rooms"
 		},
 		{
-			"category": 13,
-			"number": 13080,
-			"text": "Sound, Vibration, and Seismic Control",
-			"id": 158,
+			"index": 158,
 			"name": "13080 Sound, Vibration, and Seismic Control"
 		},
 		{
-			"category": 13,
-			"number": 13090,
-			"text": "Radiation Protection",
-			"id": 159,
+			"index": 159,
 			"name": "13090 Radiation Protection"
 		},
 		{
-			"category": 13,
-			"number": 13100,
-			"text": "Lightning Protection",
-			"id": 160,
+			"index": 160,
 			"name": "13100 Lightning Protection"
 		},
 		{
-			"category": 13,
-			"number": 13110,
-			"text": "Cathodic Protection",
-			"id": 161,
+			"index": 161,
 			"name": "13110 Cathodic Protection"
 		},
 		{
-			"category": 13,
-			"number": 13120,
-			"text": "Pre-Engineered Structures",
-			"id": 162,
+			"index": 162,
 			"name": "13120 Pre-Engineered Structures"
 		},
 		{
-			"category": 13,
-			"number": 13150,
-			"text": "Swimming Pools",
-			"id": 163,
+			"index": 163,
 			"name": "13150 Swimming Pools"
 		},
 		{
-			"category": 13,
-			"number": 13160,
-			"text": "Aquariums",
-			"id": 164,
+			"index": 164,
 			"name": "13160 Aquariums"
 		},
 		{
-			"category": 13,
-			"number": 13165,
-			"text": "Aquatic Park Facilities",
-			"id": 165,
+			"index": 165,
 			"name": "13165 Aquatic Park Facilities"
 		},
 		{
-			"category": 13,
-			"number": 13170,
-			"text": "Tubs and Pools",
-			"id": 166,
+			"index": 166,
 			"name": "13170 Tubs and Pools"
 		},
 		{
-			"category": 13,
-			"number": 13175,
-			"text": "Ice Rinks",
-			"id": 167,
+			"index": 167,
 			"name": "13175 Ice Rinks"
 		},
 		{
-			"category": 13,
-			"number": 13185,
-			"text": "Kennels and Animal Shelters",
-			"id": 168,
+			"index": 168,
 			"name": "13185 Kennels and Animal Shelters"
 		},
 		{
-			"category": 13,
-			"number": 13190,
-			"text": "Site-Constructed Incinerators",
-			"id": 169,
+			"index": 169,
 			"name": "13190 Site-Constructed Incinerators"
 		},
 		{
-			"category": 13,
-			"number": 13200,
-			"text": "Storage Tanks",
-			"id": 170,
+			"index": 170,
 			"name": "13200 Storage Tanks"
 		},
 		{
-			"category": 13,
-			"number": 13220,
-			"text": "Filter Underdrains and Media",
-			"id": 171,
+			"index": 171,
 			"name": "13220 Filter Underdrains and Media"
 		},
 		{
-			"category": 13,
-			"number": 13230,
-			"text": "Digester Covers and Appurtenances",
-			"id": 172,
+			"index": 172,
 			"name": "13230 Digester Covers and Appurtenances"
 		},
 		{
-			"category": 13,
-			"number": 13240,
-			"text": "Oxygenation Systems",
-			"id": 173,
+			"index": 173,
 			"name": "13240 Oxygenation Systems"
 		},
 		{
-			"category": 13,
-			"number": 13260,
-			"text": "Sludge Conditioning Systems",
-			"id": 174,
+			"index": 174,
 			"name": "13260 Sludge Conditioning Systems"
 		},
 		{
-			"category": 13,
-			"number": 13280,
-			"text": "Hazardous Material Remediation",
-			"id": 175,
+			"index": 175,
 			"name": "13280 Hazardous Material Remediation"
 		},
 		{
-			"category": 13,
-			"number": 13400,
-			"text": "Measurement and Control Instrumentation",
-			"id": 176,
+			"index": 176,
 			"name": "13400 Measurement and Control Instrumentation"
 		},
 		{
-			"category": 13,
-			"number": 13500,
-			"text": "Recording Instrumentation",
-			"id": 177,
+			"index": 177,
 			"name": "13500 Recording Instrumentation"
 		},
 		{
-			"category": 13,
-			"number": 13550,
-			"text": "Transportation Control Instrumentation",
-			"id": 178,
+			"index": 178,
 			"name": "13550 Transportation Control Instrumentation"
 		},
 		{
-			"category": 13,
-			"number": 13600,
-			"text": "Solar and Wind Energy Equipment",
-			"id": 179,
+			"index": 179,
 			"name": "13600 Solar and Wind Energy Equipment"
 		},
 		{
-			"category": 13,
-			"number": 13700,
-			"text": "Security Access and Surveillance",
-			"id": 180,
+			"index": 180,
 			"name": "13700 Security Access and Surveillance"
 		},
 		{
-			"category": 13,
-			"number": 13800,
-			"text": "Building Automation and Control",
-			"id": 181,
+			"index": 181,
 			"name": "13800 Building Automation and Control"
 		},
 		{
-			"category": 13,
-			"number": 13850,
-			"text": "Detection and Alarm",
-			"id": 182,
+			"index": 182,
 			"name": "13850 Detection and Alarm"
 		},
 		{
-			"category": 13,
-			"number": 13900,
-			"text": "Fire Suppression",
-			"id": 183,
+			"index": 183,
 			"name": "13900 Fire Suppression"
 		}
 	],
 	[
 		{
-			"category": 14,
-			"number": 14100,
-			"text": "Dumbwaiters",
-			"id": 184,
+			"index": 184,
 			"name": "14100 Dumbwaiters"
 		},
 		{
-			"category": 14,
-			"number": 14200,
-			"text": "Elevators",
-			"id": 185,
+			"index": 185,
 			"name": "14200 Elevators"
 		},
 		{
-			"category": 14,
-			"number": 14300,
-			"text": "Escalators and Moving Walks",
-			"id": 186,
+			"index": 186,
 			"name": "14300 Escalators and Moving Walks"
 		},
 		{
-			"category": 14,
-			"number": 14400,
-			"text": "Lifts",
-			"id": 187,
+			"index": 187,
 			"name": "14400 Lifts"
 		},
 		{
-			"category": 14,
-			"number": 14500,
-			"text": "Material Handling",
-			"id": 188,
+			"index": 188,
 			"name": "14500 Material Handling"
 		},
 		{
-			"category": 14,
-			"number": 14600,
-			"text": "Hoists and Cranes",
-			"id": 189,
+			"index": 189,
 			"name": "14600 Hoists and Cranes"
 		},
 		{
-			"category": 14,
-			"number": 14700,
-			"text": "Turntables",
-			"id": 190,
+			"index": 190,
 			"name": "14700 Turntables"
 		},
 		{
-			"category": 14,
-			"number": 14800,
-			"text": "Scaffolding",
-			"id": 191,
+			"index": 191,
 			"name": "14800 Scaffolding"
 		},
 		{
-			"category": 14,
-			"number": 14900,
-			"text": "Transportation",
-			"id": 192,
+			"index": 192,
 			"name": "14900 Transportation"
 		}
 	],
 	[
 		{
-			"category": 15,
-			"number": 15050,
-			"text": "Basic Mechanical Materials and Methods",
-			"id": 193,
+			"index": 193,
 			"name": "15050 Basic Mechanical Materials and Methods"
 		},
 		{
-			"category": 15,
-			"number": 15100,
-			"text": "Building Services Piping",
-			"id": 194,
+			"index": 194,
 			"name": "15100 Building Services Piping"
 		},
 		{
-			"category": 15,
-			"number": 15200,
-			"text": "Process Piping",
-			"id": 195,
+			"index": 195,
 			"name": "15200 Process Piping"
 		},
 		{
-			"category": 15,
-			"number": 15300,
-			"text": "Fire Protection Piping",
-			"id": 196,
+			"index": 196,
 			"name": "15300 Fire Protection Piping"
 		},
 		{
-			"category": 15,
-			"number": 15400,
-			"text": "Plumbing Fixtures and Equipment",
-			"id": 197,
+			"index": 197,
 			"name": "15400 Plumbing Fixtures and Equipment"
 		},
 		{
-			"category": 15,
-			"number": 15500,
-			"text": "Heat-Generation Equipment",
-			"id": 198,
+			"index": 198,
 			"name": "15500 Heat-Generation Equipment"
 		},
 		{
-			"category": 15,
-			"number": 15600,
-			"text": "Refrigeration Equipment",
-			"id": 199,
+			"index": 199,
 			"name": "15600 Refrigeration Equipment"
 		},
 		{
-			"category": 15,
-			"number": 15700,
-			"text": "Heating, Ventilating, and Air Conditioning Equipment",
-			"id": 200,
+			"index": 200,
 			"name": "15700 Heating, Ventilating, and Air Conditioning Equipment"
 		},
 		{
-			"category": 15,
-			"number": 15800,
-			"text": "Air Distribution",
-			"id": 201,
+			"index": 201,
 			"name": "15800 Air Distribution"
 		},
 		{
-			"category": 15,
-			"number": 15900,
-			"text": "HVAC Instrumentation and Controls",
-			"id": 202,
+			"index": 202,
 			"name": "15900 HVAC Instrumentation and Controls"
 		},
 		{
-			"category": 15,
-			"number": 15950,
-			"text": "Testing, Adjusting, and Balancing",
-			"id": 203,
+			"index": 203,
 			"name": "15950 Testing, Adjusting, and Balancing"
 		}
 	],
 	[
 		{
-			"category": 16,
-			"number": 16050,
-			"text": "Basic Electrical Materials and Methods",
-			"id": 204,
+			"index": 204,
 			"name": "16050 Basic Electrical Materials and Methods"
 		},
 		{
-			"category": 16,
-			"number": 16100,
-			"text": "Wiring Methods",
-			"id": 205,
+			"index": 205,
 			"name": "16100 Wiring Methods"
 		},
 		{
-			"category": 16,
-			"number": 16200,
-			"text": "Electrical Power",
-			"id": 206,
+			"index": 206,
 			"name": "16200 Electrical Power"
 		},
 		{
-			"category": 16,
-			"number": 16300,
-			"text": "Transmission and Distribution",
-			"id": 207,
+			"index": 207,
 			"name": "16300 Transmission and Distribution"
 		},
 		{
-			"category": 16,
-			"number": 16400,
-			"text": "Low-Voltage Distribution",
-			"id": 208,
+			"index": 208,
 			"name": "16400 Low-Voltage Distribution"
 		},
 		{
-			"category": 16,
-			"number": 16500,
-			"text": "Lighting",
-			"id": 209,
+			"index": 209,
 			"name": "16500 Lighting"
 		},
 		{
-			"category": 16,
-			"number": 16700,
-			"text": "Communications",
-			"id": 210,
+			"index": 210,
 			"name": "16700 Communications"
 		},
 		{
-			"category": 16,
-			"number": 16800,
-			"text": "Sound and Video",
-			"id": 211,
+			"index": 211,
 			"name": "16800 Sound and Video"
 		}
 	]
