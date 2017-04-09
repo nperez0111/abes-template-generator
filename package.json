@@ -5,7 +5,8 @@
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "build": "webpack ./browserStuff.js bundle.js"
+        "build": "webpack ./browserStuff.js bundle.js",
+        "serve": "npm run build && opn 'http://localhost:8080/' && http-server ./"
     },
     "repository": {
         "type": "git",
@@ -20,7 +21,9 @@
     "dependencies": {
         "clipboard": "^1.6.1",
         "docxtemplater": "^3.0.11",
+        "http-server": "^0.9.0",
         "jszip": "2",
+        "opn-cli": "^3.1.0",
         "proxify-objects": "^0.0.5",
         "ractive-autocomplete": "^1.0.3",
         "ractive-select": "^0.8.1",

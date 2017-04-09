@@ -175,14 +175,13 @@ var Main = Ractive.extend( {
                     p[ this.keys[ i ] ] = c;
                     return p
                 }, {} ) )
+            },
+            getTabIndex: function ( r, c ) {
+                const items = this.get( 'inputs' )
+                const sum = ( utils.sum( items.filter( ( c, i ) => i >= r ).map( c => c.length ) ) )
+                return r * items[ r ].length + c
             }
         };
-    },
-    partials: {
-        input: `<div class="input-group {{unfilled[r][c]?'has-error':''}}">
-            <label for='{{r}}{{c}}' class="input-group-addon" id="label{{r}}{{c}}">{{columns[c].label}}</label>
-            <input type="{{columns[c].type}}" id="{{r}}{{c}}" value="{{toAdd[r][c]}}" tabindex="{{r+c}}" class="form-control" aria-describedby="label{{r}}{{c}}" required>
-        </div>`
     }
 } )
 

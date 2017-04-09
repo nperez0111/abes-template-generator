@@ -101,7 +101,7 @@
                                 <td>
                                     <div class="col-sm-12">
                                         <!--<label for='{{r}}{{c}}'>{{columns[c].label}}</label>-->
-                                        <input type="{{columns[i].type}}" id="{{r}}{{c}}{{i}}" value="{{inputs[r][c][i]}}" tabindex="{{r+c}}" class="col-sm-12">
+                                        <input type="{{columns[i].type}}" id="{{r}}{{c}}{{i}}" value="{{inputs[r][c][i]}}" class="col-sm-12">
                                     </div>
                                 </td>
                                 {{/each}}
@@ -116,7 +116,11 @@
                             <tr>
                                 {{#each columns:c}}
                                 <td>
-                                    {{#if columns[c].type=='number'}} {{>input}} {{/if}}
+                                    {{#if columns[c].type=='number'}}
+                                    <div class="input-group {{unfilled[r][c]?'has-error':''}}">
+                                        <label for='{{r}}{{c}}' class="input-group-addon" id="label{{r}}{{c}}">{{columns[c].label}}</label>
+                                        <input type="{{columns[c].type}}" id="{{r}}{{c}}" value="{{toAdd[r][c]}}" class="form-control" aria-describedby="label{{r}}{{c}}" required>
+                                    </div> {{/if}}
                                     <!-- Splits up the if statement-->
                                     {{#if columns[c].type=='text'}}
                                     <div class="input-group {{unfilled[r][c]?'has-error':''}}">
