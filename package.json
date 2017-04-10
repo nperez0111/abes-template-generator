@@ -6,7 +6,8 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "build": "webpack ./browserStuff.js bundle.js",
-        "serve": "npm run build && opn 'http://localhost:8080/' && http-server ./"
+        "serve": "npm run build && opn 'http://localhost:8080/' && http-server ./",
+        "start": "npm run build"
     },
     "repository": {
         "type": "git",
