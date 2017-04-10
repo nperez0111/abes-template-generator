@@ -2,12 +2,12 @@
     "name": "abes-template-generator",
     "version": "1.0.0",
     "description": "template generator",
-    "main": "index.js",
+    "main": "index.html",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "build": "webpack ./browserStuff.js bundle.js",
-        "serve": "npm run build && opn 'http://localhost:8080/' && http-server ./",
-        "start": "npm run build"
+        "serve": "npm run build && opn 'http://localhost:5000/' && serve",
+        "start": "serve"
     },
     "repository": {
         "type": "git",
@@ -22,14 +22,14 @@
     "dependencies": {
         "clipboard": "^1.6.1",
         "docxtemplater": "^3.0.11",
-        "http-server": "^0.9.0",
         "jszip": "2",
         "opn-cli": "^3.1.0",
         "proxify-objects": "^0.0.5",
         "ractive-autocomplete": "^1.0.3",
         "ractive-select": "^0.8.1",
         "sort-by": "^1.2.0",
-        "throttle-debounce": "^1.0.1"
+        "throttle-debounce": "^1.0.1",
+        "serve": "5.0.4"
     },
     "devDependencies": {
         "webpack": "^2.3.3"
