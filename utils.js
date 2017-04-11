@@ -43,7 +43,7 @@ const E = {
                 return ( obj.amount / divisor ).toFixed( 2 )
             },
             perc( obj ) {
-                return ( obj.amount / totalOfOtherItems ).toFixed( 4 ) * 100
+                return ( obj.amount / totalOfOtherItems*100 ).toFixed( 2 )
             }
         } )
     },
