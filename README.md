@@ -3,7 +3,7 @@
 <h1 align="center">
 	<br>
 	<br>
-	<img width="960" src="https://cdn.rawgit.com/nperez0111/abes-template-generator/63849d68/view.png" alt="Template">
+	<img width="960" src="https://cdn.jsdelivr.net/gh/nperez0111/abes-template-generator@63849d68/view.png" alt="Template">
 	<br>
 	<br>
 	<br>
